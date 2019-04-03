@@ -14,19 +14,17 @@ from typing import List
 class Solution:
     def __init__(self, nums: List[int]):
         self.nums = nums
-        self.backup = list(nums)
 
     def reset(self) -> List[int]:
         """
         Resets the array to its original configuration and return it.
         """
-        self.nums = self.backup
-        self.backup = list(self.backup)
         return self.nums
 
     def shuffle(self) -> List[int]:
         """
         Returns a random shuffling of the array.
         """
-        random.shuffle(self.nums)
-        return self.nums
+        nums_shuffled = self.nums[:]
+        random.shuffle(nums_shuffled)
+        return nums_shuffled
