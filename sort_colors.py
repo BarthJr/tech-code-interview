@@ -23,14 +23,17 @@ from typing import List
 
 
 def sort_colors(nums: List[int]) -> None:
-    array = [0, 0, 0]
-    for num in nums:
-        array[num] += 1
-
-    pos = 0
-    for i, count in enumerate(array):
-        for j in range(count):
-            nums[pos] = i
-            pos += 1
+    RED, WHITE, BLUE = 0, 1, 2
+    low, mid, high = 0, 0, len(nums) - 1
+    while mid <= high:
+        if nums[mid] == RED:
+            nums[low], nums[mid] = nums[mid], nums[low]
+            low += 1
+            mid += 1
+        elif nums[mid] == WHITE:
+            mid += 1
+        else:
+            nums[mid], nums[high] = nums[high], nums[mid]
+            high -= 1
 
     nums[:] = nums
