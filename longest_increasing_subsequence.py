@@ -12,11 +12,16 @@ from typing import List
 
 
 def lengthOfLIS(nums: List[int]) -> int:
-    if not nums:
-        return 0
-    max_len = [1] * len(nums)
-    for i in range(len(nums)):
-        for j in range(i):
-            if nums[i] > nums[j]:
-                max_len[i] = max(max_len[i], max_len[j] + 1)
-    return max(max_len)
+    tails = [0] * len(nums)
+    larger = 0
+    for num in nums:
+        left, right = 0, larger
+        while left != right:
+            mid = (left + right) // 2
+            if tails[mid] < num:
+                left = mid + 1
+            else:
+                right = mid
+        tails[left] = num
+        larger = max(left + 1, larger)
+    return larger
