@@ -9,13 +9,13 @@
 """
 
 
-def countingValleys(s):
-    count, count_valleys = 0, 0
-    for i, w in enumerate(s):
-        if w == 'U':
-            count += 1
-        else:
-            count -= 1
-        if count == 0 and s[i] == 'U':
-            count_valleys += 1
-    return count_valleys
+def countingValleys(path):
+    UPHILL = 'U'
+    DOWNHILL = 'D'
+    sea_level, number_valleys = 0, 0
+    for i, step in enumerate(path):
+        path_elements = {UPHILL: 1, DOWNHILL: -1}
+        sea_level += path_elements[step]
+        if sea_level == 0 and path[i] == UPHILL:
+            number_valleys += 1
+    return number_valleys
