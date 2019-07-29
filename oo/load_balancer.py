@@ -44,53 +44,10 @@
 1,1
 >>> load_balancer
 1,1
-
-
-
-
->>> load_balancer = LoadBalancer()
->>> load_balancer.add_users(1)
->>> load_balancer
-1
->>> load_balancer.tick()
-
->>> load_balancer.add_users(3)
->>> load_balancer
-2,2
->>> load_balancer.tick()
-
->>> load_balancer.add_users(0)
->>> load_balancer
-2,2
->>> load_balancer.tick()
-
->>> load_balancer.add_users(1)
->>> load_balancer
-2,2,1
->>> load_balancer.tick()
-
->>> load_balancer.add_users(0)
->>> load_balancer
-1,2,1
->>> load_balancer.tick()
-
->>> load_balancer.add_users(1)
->>> load_balancer
-2
->>> load_balancer.tick()
-
->>> load_balancer
-2
->>> load_balancer.tick()
-
->>> load_balancer
-1
->>> load_balancer.tick()
-
->>> load_balancer
-1
 >>> load_balancer.have_servers()
 True
+>>> load_balancer.tick()
+>>> load_balancer.tick()
 >>> load_balancer.tick()
 >>> load_balancer.have_servers()
 False
