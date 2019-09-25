@@ -11,6 +11,7 @@
 def waterArea(heights):
     left_array = [0 for _ in heights]
     max_height = 0
+
     for i in range(len(heights)):
         left_array[i] = max_height
         max_height = max(heights[i], max_height)
